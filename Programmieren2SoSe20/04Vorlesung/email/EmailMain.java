@@ -32,6 +32,7 @@ public class EmailMain {
 //		String regex = "(Haus)|(Häuser)";
 //		String regex = "\\s[Aa][a-z]*[d]\\s";
 		String regex = "(\\s|^)\\s[Aa]\\w*[d](\\s|[.,?!:;]";
+		
 		Pattern pattern = Pattern.compile(regex);
 		for(Email email : emails) {
 			Matcher matcher = pattern.matcher(email.getMessage());
