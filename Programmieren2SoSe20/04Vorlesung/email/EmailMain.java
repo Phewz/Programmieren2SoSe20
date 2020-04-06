@@ -7,7 +7,7 @@ public class EmailMain {
 
 	public static void main(String[] args) {
 		
-		Email [] emails = new Email[20];
+		Email [] emails = new Email[23];
 		emails[0] = new Email("Programmieren 2 Vorlesung", "Hallo allerseits,\ndie Vorlesung morgen fällt leider aus.\nViele Grüße\nStephi");
 		emails[1] = new Email("Witze", "Huhu,\nich bin gerade auf der Suche nach coolen Chuck Norris Witzen. Du kennst doch so viele. Kannst du mir mal welche schreiben?\nDas wäre mega cool :)\nLG, Rudolf");
 		emails[2] = new Email("SRA Treffen", "Guten Tag liebe Kollegen und Kollginnen,\nheute findet der nächste Studienreformausschuss in E45 statt.\nMit freundlichen Grüßen\nMarkus Schubert");
@@ -28,10 +28,17 @@ public class EmailMain {
 		emails[17] = new Email("Bier brauen", "Hey Jan,\nSarah will mal Bier brauen, du musst dann wohl unter übel vorbei kommen zum kosten.\nBis denne\nSteve");
 		emails[18] = new Email("Nachbarschaftshilfe", "Hey Laura,\nwollen 00:34:45wir mal Werbung für unsere Nachbarschaftshilfe machen? Können ja mal nachher drüber quatschen. Wann treffen wir uns eigentlich?");
 		emails[19] = new Email("Bla", "Test, bla, test, huhu, was geht, was geht Digga?");
+		emails[20] = new Email("Cool", "Ich heiße Martin Geibel und bin cool.");
+		emails[21] = new Email("Cool", "Ich heiße Martin G. und bin cool.");
+		emails[22] = new Email("S und E", "Setze ich mich hin dann setzte sie sich hin. seele sehrend");
 
-//		String regex = "(Haus)|(Häuser)";
-//		String regex = "\\s[Aa][a-z]*[d]\\s";
-		String regex = "(\\s|^)\\s[Aa]\\w*[d](\\s|[.,?!:;]";
+//		String regex = "(Haus)|(Häuser)"; // Filtert Haus oder Häuser exakt geschrieben
+//		String regex = "\\s[Aa][a-z]*[d]\\s"; // Filtert alle wörter die mit d enden.
+//		String regex = "(\\s|^)*[Aa]\\w*[d](\\s|[.,?!:;])*"; // Filtert wörter die mit A oder a anfangen und mit d enden.
+//		String regex = "([A-Z][a-z]*[\\s-][A-Z][a-z]*)|([A-Z][a-z]*[\\s-][A-Z].)"; // Filtert Namen aus Text
+//		String regex = "(\\s|^)*[Ss]\\w*[e](\\s|[.,?!:;])*"; // Alle Wörter die mit S oder s und mit e aufhören.
+		String regex = "^[a-kA-K].*[.!?]?\\s(\\S+)[.]$"; // Filtert letztes Wort eines Satzes wenn es mit a-k oder A-K anfängt.
+		
 		
 		Pattern pattern = Pattern.compile(regex);
 		for(Email email : emails) {
