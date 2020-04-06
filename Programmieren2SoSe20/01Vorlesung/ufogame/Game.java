@@ -1,11 +1,15 @@
 package ufogame;
 
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
+import java.util.Iterator;
 
 import view.GameFrameWork;
+import view.IGameObject;
 import view.IKeyboardListener;
 import view.ITickableListener;
+import view.Message;
 
 public class Game implements ITickableListener, IKeyboardListener {
 
@@ -18,6 +22,8 @@ public class Game implements ITickableListener, IKeyboardListener {
 	private int screenWidth = 900;
 	private int screenHeight = 700;
 	private GameFrameWork frameWork = new GameFrameWork();
+	private int score = 0;
+	Message score_message = new Message("Score " + score, 780, 25, 24, new Color(255, 255, 255));
 
 	/**
 	 * Initiates everything for the game. Multiple ufos and a ship are created.
@@ -40,6 +46,9 @@ public class Game implements ITickableListener, IKeyboardListener {
 					ufos.get(0).getHeight(), ufos.get(0).getSpeed(), ufos.get(0).getImagePath()));
 			frameWork.addGameObject(ufos.get(i));
 		}
+		
+		
+		frameWork.addMessage(score_message);
 
 		frameWork.addTick(this);
 		frameWork.addIKeyInput(this);
@@ -73,7 +82,7 @@ public class Game implements ITickableListener, IKeyboardListener {
 		// Variante Array
 		// projectiles.lenght
 	}
-
+	
 	@Override
 	public void tick(long elapsedTime) {
 		for (Ufo ufo : ufos) {
@@ -91,8 +100,31 @@ public class Game implements ITickableListener, IKeyboardListener {
             p.move();
         }
 		
+		
+		// Projektile die über den Rand gehen = deleted
+		if(projectiles.size() > 0) {
+			if(projectiles.get(0).getY() < -10) {
+				frameWork.removeGameObject(projectiles.get(0));
+				projectiles.remove(0);
+			}
+		}
+		
+		
+		
+		// Collision + Score
+		if(checkCollided()) {
+			frameWork.removeMessage(score_message);
+			score += 1;
+			score_message = new Message("Score " + score, 780, 25, 24, new Color(255, 255, 255));
+			frameWork.addMessage(score_message);
+		}
+		
+		
 		//TODO check size of list
-//			frameWork.removeGameObject(projectiles.get(0));
+		if(projectiles.size() < 0) {
+			frameWork.removeGameObject(projectiles.get(0));
+		}
+		
 	}
 
 	@Override
@@ -104,7 +136,31 @@ public class Game implements ITickableListener, IKeyboardListener {
 	@Override
 	public void keyDown(int key) {
 		shoot();
-		
 	}
-
+	
+	
+	// Collision AABB
+	//	box1.x + box1.w >= box2.x
+	//	box2.x + box2.w >= box1.x
+	//	box1.y + box1.h >= box2.y
+	//	box2.y + box2.h >= box1.y
+	public boolean checkCollided() {
+		for(int p = 0; p < projectiles.size(); p++) {
+			for(int u = 0; u < ufos.size(); u++) {
+				if(projectiles.get(p).getX() + projectiles.get(p).getWidth() >= ufos.get(u).getX()
+						&& ufos.get(u).getX() + ufos.get(u).getWidth() >= projectiles.get(p).getX()
+						&& projectiles.get(p).getY() + projectiles.get(p).getHeight() >= ufos.get(u).getY()
+						&& ufos.get(u).getY() + ufos.get(u).getHeight() >= projectiles.get(p).getY()) {
+					
+					frameWork.removeGameObject(projectiles.get(p));
+					frameWork.removeGameObject(ufos.get(u));
+					projectiles.remove(p);
+					ufos.remove(u);
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
 }

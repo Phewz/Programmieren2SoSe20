@@ -1,5 +1,7 @@
 package ufogame;
 
+import java.awt.event.KeyEvent;
+
 import view.IGameObject;
 
 /**
@@ -56,5 +58,4 @@ public class Ship implements IGameObject {
 	public String toString() {
 		return "x = " + x + ", y = " + y;
 	}
-	
 }

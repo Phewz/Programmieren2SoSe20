@@ -176,9 +176,7 @@ public class GameFrameWork {
 	 */
 	public void addRectangle(Rectangle rectangle) throws NullPointerException {
 		if (rectangle != null) {
-			synchronized (gameShapes) {
-				gameShapes.add(rectangle);
-			}
+			gameShapes.add(rectangle);
 		} else {
 			throw new NullPointerException("The rectangle object is null");
 		}
@@ -194,9 +192,7 @@ public class GameFrameWork {
 	 */
 	public void addOval(Oval oval) throws NullPointerException {
 		if (oval != null) {
-			synchronized (gameShapes) {
-				gameShapes.add(oval);
-			}
+			gameShapes.add(oval);
 		} else {
 			throw new NullPointerException("The oval object is null");
 		}
@@ -337,11 +333,7 @@ public class GameFrameWork {
 	 * @param background to draw
 	 */
 	public void setBackground(IBackground background) {
-		if(background != null) {
-			gameFrame.addBackground(background);
-		}  else {
-			throw new NullPointerException("The background object is null");
-		}
+		gameFrame.addBackground(background);
 	}
 
 	/**
@@ -350,11 +342,8 @@ public class GameFrameWork {
 	 * @param background to remove
 	 */
 	public void removeBackground(IBackground background) {
-		if(background != null) {
-			gameFrame.addBackground(null);			
-		}  else {
-			throw new NullPointerException("The background object is null");
-		}
+		gameFrame.addBackground(null);
+
 	}
 
 
@@ -366,32 +355,16 @@ public class GameFrameWork {
 	 * @see Message
 	 */
 	public void addMessage(Message message) {
-		if(message != null ) {
-			synchronized (message) {
-				messages.add(message);			
-			}
-		}  else {
-			throw new NullPointerException("The message object is null");
-		}
+		messages.add(message);
 	}
 
 	public void removeMessage(Message message) {
-		if(message != null ) {
-			synchronized (message) {
-				messages.remove(message);	
-			}
-		}  else {
-			throw new NullPointerException("The message object is null");
-		}
+		messages.remove(message);
 	}
 
-	//TODO camera sight
-	public void setCamera(Camera camera) {
-		if(camera != null) {
-			gameFrame.setCamera(camera);
-		}  else {
-			throw new NullPointerException("The camera object is null");
-		}
-	}
+//	//TODO camera sight
+//	public void setCamera(Camera camera) {
+//		gameFrame.setCamera(camera);
+//	}
 	
 }

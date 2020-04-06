@@ -79,6 +79,4 @@ public class Ufo implements IGameObject {
 	public String getImagePath() {
 		return sprite;
 	}
-	
-	
 }

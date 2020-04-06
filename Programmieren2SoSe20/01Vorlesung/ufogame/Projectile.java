@@ -72,8 +72,4 @@ public class Projectile implements IGameObject {
 	public String getImagePath() {
 		return sprite;
 	}
-	
-	
-	
-	
 }
