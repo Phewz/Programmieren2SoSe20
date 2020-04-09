@@ -57,15 +57,15 @@ Excercise :  Mission completed
 Schreibt eine Methode boolean emailCheck(String email), dabei sollt ihr prüfen, ob die Email-Adresse ein Mix aus Buchstaben und Zahlen, gefolgt von einem @, danach sind Buchstaben erlaubt, ein Punkt muss folgen und danach müssen 2-4 Buchstaben wieder folgen. Eure emailCheck()-Methode soll prüfen, ob angegebene Email-Adressen diesem Schema folgen. In Grün sind die Wörter aufgeführt, die ihr filtern solltet. In Rot sind Wörter aufgeführt, die ihr nicht filtern solltet.
 
 
-Excercise :  Waiting to be solved 
+Excercise :  Mission completed 
 Filtert nach Ausdrücken, die mit 1-2 Zahlen bestehen, gefolgt von 1-2 Zahlen, gefolgt von 2 oder 4 Zahlen.In Grün sind die Wörter aufgeführt, die ihr filtern solltet. In Rot sind Wörter aufgeführt, die ihr nicht filtern solltet.
 
 
-Excercise :  Waiting to be solved 
+Excercise :  Mission completed 
 Filtert, ob der Ausdruck ein gültiger Identifier(Bezeichner/Variablenname) ist. Gültig ist der Name, wenn er mit einem Buchstaben, $ oder _ beginnt. Die folgenden Zeichen können Buchstaben, Zahlen, _ und $ sein.In Grün sind die Wörter aufgeführt, die ihr filtern solltet. In Rot sind Wörter aufgeführt, die ihr nicht filtern solltet.
 
 
-Excercise :  Waiting to be solved 
+Excercise :  Mission completed 
 Erweitert eure Aufgabe und prüft, ob eine boolean Variable richtig deklariert wurde. Zwischen dem Datentyp und dem Variablennamen etc. muss mindestens ein Whitespace. Damit darf auch ein Zeilenumbruch stehen.In Grün sind die Wörter aufgeführt, die ihr filtern solltet. In Rot sind Wörter aufgeführt, die ihr nicht filtern solltet.
 
 
