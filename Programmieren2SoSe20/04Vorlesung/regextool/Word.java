@@ -1,17 +1,23 @@
 package regextool;
 
-public class Word {
+import java.io.Serializable;
 
+public class Word implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String word;
 	private boolean [] isMatched;
 	
 	public Word(String word) {
 		super();
 		this.word = word;
-		initIsMatched();
+		init();
 	}
 
-	private void initIsMatched() {
+	public void init() {
 		isMatched = new boolean[word.length()];
 		for(int i = 0; i < isMatched.length; i++) {
 			isMatched[i] = false;
@@ -24,7 +30,7 @@ public class Word {
 
 	public void setWord(String word) {
 		this.word = word;
-		initIsMatched();
+		init();
 	}
 
 	public boolean[] getIsMatched() {
