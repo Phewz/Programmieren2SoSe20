@@ -31,5 +31,6 @@ public class MySet {
 			}
 		}
 		System.out.println(names.size());
+		// Test
 	}
 }
